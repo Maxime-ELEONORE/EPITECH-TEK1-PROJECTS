@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2018
+## 101_pong
+## File description:
+## lol
+##
+
+import sys
+import math
+
+def pong():
+
+    if (len(sys.argv) != 8):
+        print("./101pong x0 y0 z0 x1 y1 z1 n")
+        sys.exit(84)
+    try:
+        x0, y0, z0 = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3])
+        x1, y1, z1 = float(sys.argv[4]), float(sys.argv[5]), float(sys.argv[6])
+        n = int(sys.argv[7])
+    except:
+        print("./101pong x0 y0 z0 x1 y1 z1 n")
+        sys.exit(84)
+    if n < 0:
+        print("./101pong x0 y0 z0 x1 y1 z1 n")
+        sys.exit(84)
+    print("The velocity vector of the ball is:")
+    print("(","%.2f"%(x1-x0),",","%.2f"%(y1-y0),",","%.2f"%(z1-z0),")")
+    print("At time t+",n,", call coordinate will be:")
+    print("(","%.2f"%((x1-x0)*n+x0),",", "%.2f"%((y1-y0)*n+y0),",","%.2f"%((z1-z0)*n+z0),")")
+    if(z1-z0<0) & (z1 != 0):
+        print("The ball won't reach the bat.")
+        sys.exit(84)
+    print("The incidence angle is:")
+
+
+pong()

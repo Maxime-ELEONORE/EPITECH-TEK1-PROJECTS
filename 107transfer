@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2018
+## architect
+## File description:
+## architect
+##
+
+from sys import *
+
+
+def method_1(av, av2):
+    x = 0.000
+    a = argv[av]
+    b = argv[av2]
+
+    if a[0] != '*' and a[len(a) - 1] != '*' and b[0] != '*' and b[len(b) - 1] != '*':
+        list_a = a.split("*")
+        list_b = b.split("*")
+        i = 0
+        while i < len(list_a):
+            list_a[i] = int(list_a[i])
+            i += 1
+        i = 0
+        while i < len(list_b):
+            list_b[i] = int(list_b[i])
+            i += 1
+        while x < 1.001:
+            j = 0
+            res = 0
+            n = 0
+            while j < len(list_a):
+                res += list_a[j] * (x ** n)
+                j += 1
+                n += 1
+            res_b = 0
+            j = 0
+            n = 0
+            while j < len(list_b):
+                res_b += list_b[j] * (x ** n)
+                j += 1
+                n += 1
+            if res_b == 0:
+                end = 0.000
+            else:
+                end = res / res_b
+            print("%.3f" % x, "->", "%.5f" % end)
+            x += 0.001
+
+
+def method_2():
+    av = 1
+    av2 = 2
+    x = 0.000
+    n = 0
+
+    while x < 1.001:
+        res = 1
+        av = 1
+        av2 = 2
+        while av2 <= len(argv):
+            n = 0
+            list_a = argv[av].split("*")
+            list_b = argv[av2].split("*")
+            i = 0
+            while i < len(list_a):
+                list_a[i] = int(list_a[i])
+                i += 1
+            i = 0
+            while i < len(list_b):
+                list_b[i] = int(list_b[i])
+                i += 1
+            i = 0
+            res_a = 0.000
+            n = 0
+            while i < len(list_a):
+                res_a += list_a[i] * (x ** n)
+                i += 1
+                n += 1
+            i = 0
+            res_b = 0.000
+            n = 0
+            while i < len(list_b):
+                res_b += list_b[i] * (x ** n)
+                i += 1
+                n += 1
+            if res_b == 0:
+                res = 0.000
+            else:
+                res *= (res_a / res_b)
+            av += 2
+            av2 += 2
+        print("%.3f" % x, "->", "%.5f" % res)
+        x += 0.001
+
+
+def main():
+    i = 1
+    while i < len(argv):
+        if len(argv) % 2 == 0:
+            exit(84)
+        j = 0
+        while j < len(argv[i]) - 1:
+            if argv[i][j] == '*' and argv[i][j + 1] == "*":
+                exit(84)
+            j += 1
+        if len(argv[i]) < 1:
+            exit(84)
+        i += 1
+    if len(argv) == 3:
+        method_1(1, 2)
+    elif len(argv) > 3 and len(argv) % 2 == 1:
+        method_2()
+
+try:
+    main()
+except:
+    exit(84)
